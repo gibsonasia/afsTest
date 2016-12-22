@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.asiagibson.afstest.R;
 import com.example.asiagibson.afstest.models.Animals;
@@ -39,6 +40,7 @@ public class Animals_frag extends Fragment{
     AnimalAdapter adapter;
     List<Animals> animalsList = new ArrayList<>();
 
+    TextView textView;
 
     @Nullable
     @Override
@@ -98,8 +100,9 @@ public class Animals_frag extends Fragment{
             @Override
             public void onResponse(Call<Data> call, Response<Data> response) {
                 Data dataResponse = response.body();
-//                Animals theAnimal = dataResponse.setAnimals(animalsList);
-//                animalsList = theAnimal.getName();
+                textView.setText(response.body().getSuccess());
+//                Animals theAnimal = dataResponse.getAnimals();
+//               animalsList = theAnimal.g
 
                 adapter = new AnimalAdapter(animalsList); //pass our list of songs into the adapter
                 rv.setAdapter(adapter); //set adapter to the recyclerView with the song list
